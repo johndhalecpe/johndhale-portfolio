@@ -116,7 +116,7 @@ export default function Projects() {
               Preview
             </button>
             <a
-              href="https://agham-worship-setlist-app.vercel.app/"
+              href="https://agham-setlist.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono"
