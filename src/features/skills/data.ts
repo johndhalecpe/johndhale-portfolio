@@ -24,17 +24,23 @@ export const skillGroups: SkillGroup[] = [
       { name: 'React', accent: true },
       { name: 'Next.js', accent: true },
       { name: 'Node.js', accent: true },
+      { name: 'Supabase', accent: true },
+      { name: 'PostgreSQL', accent: true },
+      { name: 'Docker', accent: true },
+      { name: 'REST APIs', accent: true },
       { name: 'Vercel', secondary: true },
     ],
   },
   {
     label: 'AI & Productivity',
     code: '// ai & productivity tools',
-    color: '#a78bfa',
+    color: 'var(--accent-purple)',
     skills: [
       { name: 'OpenCode', accent: true },
       { name: 'Claude', accent: true },
+      { name: 'Canva', accent: true },
       { name: 'Notion', secondary: true },
+      { name: 'Squoosh', secondary: true },
     ],
   },
   {
@@ -49,15 +55,6 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Sensors', secondary: true },
       { name: 'OLED / SH110x', secondary: true },
       { name: 'Circuit Design', secondary: true },
-    ],
-  },
-  {
-    label: 'Design & Optimization',
-    code: '// design & optimization',
-    color: '#f472b6',
-    skills: [
-      { name: 'Canva', accent: true },
-      { name: 'Squoosh', secondary: true },
     ],
   },
   {

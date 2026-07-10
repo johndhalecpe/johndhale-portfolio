@@ -36,7 +36,7 @@ export default function ProjectCard({ num, name, desc, tags, dashed, href, image
           e.currentTarget.style.transform = 'translateY(0)'
         }}
       >
-        <div className="font-mono" style={{ fontSize: 10, color: 'var(--accent)', opacity: 0.5, marginBottom: '0.75rem', letterSpacing: 2 }}>
+        <div className="font-mono" style={{ fontSize: 12, color: 'var(--accent)', opacity: 0.5, marginBottom: '0.75rem', letterSpacing: 2 }}>
           {num}
         </div>
         <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.3 }}>
@@ -50,7 +50,7 @@ export default function ProjectCard({ num, name, desc, tags, dashed, href, image
             <span
               key={tag}
               className="font-mono"
-              style={{ fontSize: 9, letterSpacing: 1, color: 'var(--accent)', background: 'var(--accent-dim)', padding: '4px 10px', borderRadius: 2 }}
+              style={{ fontSize: 11, letterSpacing: 1, color: 'var(--accent)', background: 'var(--accent-dim)', padding: '4px 10px', borderRadius: 2 }}
             >
               {tag}
             </span>
@@ -63,7 +63,7 @@ export default function ProjectCard({ num, name, desc, tags, dashed, href, image
               className="font-mono"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginTop: '1.25rem',
-                fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase',
                 color: 'var(--accent)', opacity: 0.7, textDecoration: 'none',
                 transition: 'opacity 0.2s', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
               }}
@@ -87,7 +87,7 @@ export default function ProjectCard({ num, name, desc, tags, dashed, href, image
               onClick={(e) => e.stopPropagation()}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginTop: '1.25rem',
-                fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase',
                 color: 'var(--accent)', opacity: 0.7, textDecoration: 'none', transition: 'opacity 0.2s',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}

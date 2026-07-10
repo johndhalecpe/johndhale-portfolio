@@ -101,7 +101,7 @@ export default function About() {
                   color: i % 2 === 0 ? 'var(--accent)' : 'var(--secondary)',
                   display: 'block',
                   marginBottom: 4,
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: 2,
                 }}
               >

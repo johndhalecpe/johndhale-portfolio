@@ -34,7 +34,7 @@ export default function TimelineItem({ date, title, desc, active }: TimelineItem
         }}
       />
 
-      <div className="font-mono" style={{ fontSize: 10, letterSpacing: 2, color: 'var(--accent)', marginBottom: '0.8rem' }}>
+      <div className="font-mono" style={{ fontSize: 12, letterSpacing: 2, color: 'var(--accent)', marginBottom: '0.8rem' }}>
         {date}
       </div>
       <div className="font-mono" style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem' }}>

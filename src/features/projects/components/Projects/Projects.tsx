@@ -72,7 +72,7 @@ export default function Projects() {
         onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)' }}
       >
         <div>
-          <div className="font-mono" style={{ fontSize: 10, color: 'var(--accent)', opacity: 0.5, marginBottom: '0.75rem', letterSpacing: 2 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: 'var(--accent)', opacity: 0.5, marginBottom: '0.75rem', letterSpacing: 2 }}>
             01 // full-stack web application
           </div>
           <div className="font-mono" style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.3 }}>
@@ -89,7 +89,7 @@ export default function Projects() {
               <span
                 key={tag}
                 className="font-mono"
-                style={{ fontSize: 9, letterSpacing: 1, color: 'var(--accent)', background: 'var(--accent-dim)', padding: '4px 10px', borderRadius: 2 }}
+                style={{ fontSize: 11, letterSpacing: 1, color: 'var(--accent)', background: 'var(--accent-dim)', padding: '4px 10px', borderRadius: 2 }}
               >
                 {tag}
               </span>
@@ -101,7 +101,7 @@ export default function Projects() {
               onClick={(e) => { e.stopPropagation(); setShowPreview(true) }}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase',
                 color: 'var(--accent)', opacity: 0.7, textDecoration: 'none',
                 transition: 'opacity 0.2s', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
               }}
@@ -123,7 +123,7 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase',
                 color: 'var(--accent)', opacity: 0.7, textDecoration: 'none', transition: 'opacity 0.2s',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
@@ -139,7 +139,7 @@ export default function Projects() {
 
         <div style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', alignItems: isMobile ? 'center' : 'flex-end', gap: '0.75rem', flexWrap: 'wrap' }}>
           <Badge label="FULL-STACK" color="var(--secondary)" bg="var(--secondary-dim)" border="var(--secondary-border)" />
-          <Badge label="SUPABASE" color="#3ecf8e" bg="rgba(62,207,142,0.1)" border="rgba(62,207,142,0.3)" />
+          <Badge label="SUPABASE" color="var(--badge-supabase)" bg="var(--badge-supabase-dim)" border="var(--badge-supabase-border)" />
         </div>
       </div>
 

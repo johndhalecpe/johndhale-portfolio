@@ -12,10 +12,10 @@ interface PreviewModalProps {
 }
 
 const N = (raised: boolean, inset = false) => {
-  const d = raised ? 'rgba(0,0,0,0.65)' : 'rgba(0,0,0,0.5)'
-  const l = raised ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.03)'
+  const d = 'var(--accent-dim)'
+  const l = raised ? 'var(--accent-border)' : 'var(--accent-dim)'
   const i = inset ? 'inset ' : ''
-  return `${i}5px 5px 12px ${d}, ${i}-5px -5px 12px ${l}`
+  return `${i}2px 2px 8px ${d}, ${i}-2px -2px 8px ${l}`
 }
 
 const SWIPE_THRESHOLD = 50
@@ -60,7 +60,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
   const ar = isMobile ? '4 / 3' : '16 / 10'
 
   const btnCommon: React.CSSProperties = {
-    background: '#1c1c20',
+    background: 'var(--overlay)',
     border: 'none',
     cursor: 'pointer',
     display: 'flex',
@@ -74,7 +74,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
     <div
       style={{
         position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'rgba(0,0,0,0.92)',
+        background: 'var(--overlay)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: isMobile ? '0.5rem' : '1rem',
         cursor: 'pointer',
@@ -100,7 +100,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
             width: '100%',
             borderRadius: isMobile ? 14 : 18,
             overflow: 'hidden',
-            background: '#16161a',
+            background: 'var(--overlay-alt)',
             boxShadow: N(true),
             transition: 'box-shadow 0.3s',
           }}
@@ -135,7 +135,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
                 <div
                   style={{
                     width: 28, height: 28, borderRadius: '50%',
-                    background: '#1c1c20',
+                    background: 'var(--overlay)',
                     boxShadow: N(true, true),
                     animation: 'spin 0.8s linear infinite',
                   }}
@@ -158,8 +158,8 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
               fontSize: isMobile ? 18 : 16,
               lineHeight: 1,
               boxShadow: N(true),
-              color: 'var(--text-secondary)',
-              background: '#1c1c20',
+color: 'var(--text-secondary)',
+                  background: 'var(--overlay)',
               zIndex: 1,
             }}
             onMouseEnter={(e) => {
@@ -193,7 +193,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
                 height: isMobile ? 40 : 44,
                 borderRadius: '50%',
                 boxShadow: N(true),
-                background: '#1c1c20',
+                background: 'var(--overlay)',
                 opacity: isMobile ? 0.5 : 0.7,
                 zIndex: 1,
               }}
@@ -231,7 +231,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
                 height: isMobile ? 40 : 44,
                 borderRadius: '50%',
                 boxShadow: N(true),
-                background: '#1c1c20',
+                background: 'var(--overlay)',
                 opacity: isMobile ? 0.5 : 0.7,
                 zIndex: 1,
               }}
@@ -271,7 +271,7 @@ export default function PreviewModal({ images, initialIndex = 0, onClose }: Prev
                     borderRadius: isMobile ? 7 : 6,
                     border: 'none',
                     padding: 0,
-                    background: '#1c1c20',
+                    background: 'var(--overlay)',
                     boxShadow: active ? N(false, true) : N(true),
                     cursor: 'pointer',
                     transition: 'box-shadow 0.25s, width 0.3s',

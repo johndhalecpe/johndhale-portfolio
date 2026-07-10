@@ -68,8 +68,8 @@ export default function BeyondTech() {
                 key={label}
                 className="font-mono"
                 style={{
-                  fontSize: 10, color: '#a78bfa', background: 'rgba(124,58,237,0.1)',
-                  border: '1px solid rgba(124,58,237,0.2)', padding: '5px 12px', borderRadius: 2,
+                  fontSize: 10, color: 'var(--accent-purple)', background: 'var(--accent-purple-dim)',
+                  border: '1px solid var(--accent-purple-border)', padding: '5px 12px', borderRadius: 2,
                 }}
               >
                 {label}
@@ -88,7 +88,7 @@ export default function BeyondTech() {
         >
           <MusicBars />
           <InteractiveGuitar />
-          <div className="font-mono" style={{ fontSize: 10, color: 'var(--muted)', letterSpacing: 2, textAlign: 'center', lineHeight: 1.8 }}>
+          <div className="font-mono" style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: 2, textAlign: 'center', lineHeight: 1.8 }}>
             PLAYING SINCE
             <br />
             <span style={{ color: 'var(--accent)' }}>COLLEGE</span>

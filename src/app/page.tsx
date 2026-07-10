@@ -40,7 +40,7 @@ export default function Home() {
   // Particle colors change based on theme — useMemo avoids
   // recalculating on every render (only when isDark changes).
   const particleColors = useMemo(
-    () => (isDark ? ['#52525b', '#27272a'] : ['#c8c8c0', '#b8b8b0']),
+    () => (isDark ? ['#52525b', '#27272a'] : ['#d4d4ce', '#c8c8c0']),
     [isDark]
   )
 
