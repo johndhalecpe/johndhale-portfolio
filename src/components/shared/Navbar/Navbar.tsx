@@ -120,7 +120,7 @@ export default function Navbar() {
                 width: 52,
                 height: 28,
                 borderRadius: 14,
-                background: isDark ? 'var(--bg3)' : '#e8e8e0',
+                background: isDark ? 'var(--bg3)' : 'var(--toggle-bg)',
                 border: `1px solid ${toggleHover ? 'var(--accent)' : 'var(--border)'}`,
                 cursor: 'pointer',
                 position: 'relative',
@@ -145,12 +145,12 @@ export default function Navbar() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   boxShadow: isDark
-                    ? '0 0 8px rgba(16,185,129,0.4)'
-                    : '0 0 8px rgba(245,158,11,0.4)',
+                    ? '0 0 8px var(--ring)'
+                    : '0 0 8px var(--secondary-dim)',
                 }}
               >
                 {isDark ? (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <circle cx="12" cy="12" r="5" />
                     <line x1="12" y1="1" x2="12" y2="3" />
                     <line x1="12" y1="21" x2="12" y2="23" />
@@ -158,7 +158,7 @@ export default function Navbar() {
                     <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
                   </svg>
                 ) : (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                   </svg>
                 )}
@@ -185,7 +185,7 @@ export default function Navbar() {
                 width: 40,
                 height: 22,
                 borderRadius: 11,
-                background: isDark ? 'var(--bg3)' : '#e8e8e0',
+                background: isDark ? 'var(--bg3)' : 'var(--toggle-bg)',
                 border: '1px solid var(--border)',
                 cursor: 'pointer',
                 position: 'relative',
@@ -212,7 +212,7 @@ export default function Navbar() {
                 }}
               >
                 {isDark ? (
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <circle cx="12" cy="12" r="5" />
                     <line x1="12" y1="1" x2="12" y2="3" />
                     <line x1="12" y1="21" x2="12" y2="23" />
@@ -220,7 +220,7 @@ export default function Navbar() {
                     <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
                   </svg>
                 ) : (
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                   </svg>
                 )}

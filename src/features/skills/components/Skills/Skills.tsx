@@ -1,64 +1,85 @@
 'use client'
 
-// ──────────────────────────────────────────────
-// Features / Skills / Components / Skills
-// ──────────────────────────────────────────────
-// Displays skill categories with colored headers
-// and SVG icons for each skill.
-//
-// Data flow:
-//   - skillGroups come from data.ts (extracted for cleanliness)
-//   - Icons come from SkillIcon.tsx (extracted for maintainability)
-//   - useScrollFade for scroll-reveal animation
-// ──────────────────────────────────────────────
-
 import { useScrollFade } from '@/hooks/useScrollFade'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { skillGroups } from '../../data'
 import { getSkillIcon } from '../SkillIcon/SkillIcon'
-import { Skill } from '../../types'
+import { Skill, SkillGroup } from '../../types'
 import SectionLabel from '@/components/ui/SectionLabel/SectionLabel'
 
-function SkillCard({ skill, color }: { skill: Skill; color: string }) {
+function SkillCarouselItem({ skill, color }: { skill: Skill; color: string }) {
   return (
     <div
       style={{
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
-        gap: '0.6rem',
-        padding: '0.55rem 0.85rem',
-        borderRadius: 3,
-        border: `1px solid ${skill.accent ? `${color}30` : skill.secondary ? 'var(--border)' : 'var(--border)'}`,
-        background: skill.accent ? `${color}08` : 'transparent',
-        transition: 'all 0.25s ease',
+        gap: '1.1rem',
+        padding: '1rem 1.9rem',
+        borderRadius: 10,
+        border: `1px solid ${color}40`,
+        background: `${color}08`,
         cursor: 'default',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${color}60`
-        e.currentTarget.style.background = `${color}12`
-        e.currentTarget.style.transform = 'translateY(-1px)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = skill.accent ? `${color}30` : 'var(--border)'
-        e.currentTarget.style.background = skill.accent ? `${color}08` : 'transparent'
-        e.currentTarget.style.transform = 'translateY(0)'
+        flexShrink: 0,
       }}
     >
-      <span style={{ color: skill.accent ? color : 'var(--muted)', flexShrink: 0, display: 'flex' }}>
-        {getSkillIcon(skill.name)}
+      <span style={{ color, flexShrink: 0, display: 'flex', width: 41, height: 41, alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ transform: 'scale(2.35)', transformOrigin: 'center', display: 'flex' }}>
+          {getSkillIcon(skill.name)}
+        </span>
       </span>
       <span
         className="font-mono"
         style={{
-          fontSize: 11,
+          fontSize: 20,
           letterSpacing: 0.5,
-          color: skill.accent ? color : skill.secondary ? 'var(--text-secondary)' : 'var(--muted)',
-          fontWeight: skill.accent ? 600 : 400,
+          color,
+          fontWeight: 600,
           whiteSpace: 'nowrap',
         }}
       >
         {skill.name}
       </span>
+    </div>
+  )
+}
+
+function SkillCarousel({ group, index }: { group: SkillGroup; index: number }) {
+  const direction = index % 2 === 0 ? 'scroll-left' : 'scroll-right'
+  const duration = group.label === 'AI & Productivity' ? '20s' : '40s'
+
+  const items = group.skills.map((skill) => (
+    <SkillCarouselItem key={skill.name} skill={skill} color={group.color} />
+  ))
+
+  return (
+    <div>
+      {/* ── Category label (centered) ── */}
+      <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+        <div
+          className="font-mono"
+          style={{
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: 2,
+            color: group.color,
+            textTransform: 'uppercase',
+            opacity: 0.8,
+          }}
+        >
+          {'>'} {group.label}
+        </div>
+      </div>
+
+      {/* ── Scrolling track ── */}
+      <div className="skill-scroll-container">
+        <div
+          className={`skill-scroll-track ${direction}`}
+          style={{ animationDuration: duration }}
+        >
+          {items}
+          {items}
+        </div>
+      </div>
     </div>
   )
 }
@@ -74,7 +95,6 @@ export default function Skills() {
       className="scroll-fade"
       style={{ padding: isMobile ? '4rem 1.5rem' : '6rem 2rem', maxWidth: 1100, margin: '0 auto', position: 'relative' }}
     >
-      {/* ── Scattered code textures ── */}
       <span className="code-texture" style={{ top: 40, right: 20, color: 'var(--accent)', opacity: 0.04, transform: 'rotate(-2deg)' }}>
         {'const skills = ["React", "Next.js", "TypeScript"]'}
       </span>
@@ -98,36 +118,9 @@ export default function Skills() {
         <span style={{ color: 'var(--accent)' }}>with.</span>
       </h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {skillGroups.map((group) => (
-          <div key={group.label}>
-            {/* ── Category header ── */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                marginBottom: '1rem',
-                paddingBottom: '0.75rem',
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              <div style={{ width: 3, height: 16, borderRadius: 2, background: group.color, opacity: 0.7 }} />
-              <div className="font-mono" style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: group.color, textTransform: 'uppercase' }}>
-                {group.label}
-              </div>
-              <div className="font-mono" style={{ fontSize: 9, letterSpacing: 1, color: 'var(--muted)', opacity: 0.4, marginLeft: '0.25rem' }}>
-                {group.code.replace('// ', '')}
-              </div>
-            </div>
-
-            {/* ── Skills grid ── */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '0.5rem' }}>
-              {group.skills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} color={group.color} />
-              ))}
-            </div>
-          </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+        {skillGroups.map((group, i) => (
+          <SkillCarousel key={group.label} group={group} index={i} />
         ))}
       </div>
     </section>

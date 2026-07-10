@@ -16,7 +16,7 @@
   top: -18px;
   left: 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
   color: var(--accent);
   opacity: 0.06;
@@ -28,7 +28,7 @@
 
 .label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 3px;
   color: var(--accent);
   text-transform: uppercase;

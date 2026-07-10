@@ -19,7 +19,7 @@ export default function Footer() {
     <footer
       style={{
         borderTop: 'none',
-        boxShadow: '0 -1px 0 rgba(34, 211, 238, 0.15)',
+        boxShadow: '0 -1px 0 var(--accent-cyan-dim)',
         padding: '3rem 2rem 2rem',
         color: 'var(--text-secondary)',
       }}
@@ -42,7 +42,7 @@ export default function Footer() {
               alignItems: 'baseline',
               gap: 5,
               lineHeight: 1,
-              borderLeft: '2px solid rgba(34, 211, 238, 0.4)',
+              borderLeft: '2px solid var(--accent-cyan)',
               paddingLeft: 12,
             }}
           >
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
           <div
             className="font-mono hide-mobile"
-            style={{ fontSize: 9, letterSpacing: 2, color: 'var(--muted)', opacity: 0.5, textTransform: 'uppercase' }}
+            style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', opacity: 0.5, textTransform: 'uppercase' }}
           >
             <span style={{ color: 'var(--accent)', opacity: 1 }}>{'//'}</span> SYSTEMS ENGINEER · WEB DEVELOPER
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
         <div
           style={{
             height: 1,
-            background: 'linear-gradient(to right, transparent, rgba(34, 211, 238, 0.4), transparent)',
+            background: 'linear-gradient(to right, transparent, var(--accent-cyan), transparent)',
             marginBottom: '1.5rem',
           }}
         />
@@ -86,13 +86,13 @@ export default function Footer() {
             gap: '1rem',
           }}
         >
-          <div className="font-mono" style={{ fontSize: 10, letterSpacing: 2, color: 'var(--muted)', opacity: 0.7 }}>
+          <div className="font-mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', opacity: 0.7 }}>
             © <span style={{ color: 'var(--secondary)', opacity: 0.6 }}>{siteConfig.copyright}</span> ·{' '}
             <span style={{ color: 'var(--text)' }}>{siteConfig.name}</span>
           </div>
           <div
             className="font-mono"
-            style={{ fontSize: 10, letterSpacing: 2, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+            style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
           >
             <span style={{ color: 'var(--muted)' }}>Built with</span>
             <span style={{ color: 'var(--accent)', fontWeight: 600, opacity: 0.7, textShadow: '0 0 8px var(--accent-dim)' }}>

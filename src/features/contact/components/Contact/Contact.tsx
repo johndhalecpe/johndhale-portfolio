@@ -73,7 +73,7 @@ function InputField({
         htmlFor={id}
         className="font-mono"
         style={{
-          display: 'block', fontSize: 10, letterSpacing: 2,
+          display: 'block', fontSize: 12, letterSpacing: 2,
           color: focused ? 'var(--accent)' : 'var(--text-secondary)',
           marginBottom: '0.4rem', textTransform: 'uppercase', transition: 'color 0.2s',
         }}
@@ -99,7 +99,7 @@ function InputField({
         }}
       />
       {error && (
-        <div id={`${id}-error`} className="font-mono" role="alert" style={{ fontSize: 10, color: 'var(--secondary)', marginTop: '0.3rem' }}>
+        <div id={`${id}-error`} className="font-mono" role="alert" style={{ fontSize: 11, color: 'var(--secondary)', marginTop: '0.3rem' }}>
           {error}
         </div>
       )}
@@ -125,7 +125,7 @@ function TextareaField({
         htmlFor={id}
         className="font-mono"
         style={{
-          display: 'block', fontSize: 10, letterSpacing: 2,
+          display: 'block', fontSize: 12, letterSpacing: 2,
           color: focused ? 'var(--accent)' : 'var(--text-secondary)',
           marginBottom: '0.4rem', textTransform: 'uppercase', transition: 'color 0.2s',
         }}
@@ -152,7 +152,7 @@ function TextareaField({
         }}
       />
       {error && (
-        <div id={`${id}-error`} className="font-mono" role="alert" style={{ fontSize: 10, color: 'var(--secondary)', marginTop: '0.3rem' }}>
+        <div id={`${id}-error`} className="font-mono" role="alert" style={{ fontSize: 11, color: 'var(--secondary)', marginTop: '0.3rem' }}>
           {error}
         </div>
       )}
@@ -200,7 +200,7 @@ export default function Contact() {
             If you&apos;re building something interesting — let&apos;s talk.
           </p>
 
-          <div className="font-mono" style={{ fontSize: 10, letterSpacing: 2, color: 'var(--secondary)', marginBottom: '1rem', textTransform: 'uppercase', opacity: 0.8 }}>
+          <div className="font-mono" style={{ fontSize: 12, letterSpacing: 2, color: 'var(--secondary)', marginBottom: '1rem', textTransform: 'uppercase', opacity: 0.8 }}>
             {'// find me elsewhere'}
           </div>
 
@@ -228,10 +228,10 @@ export default function Contact() {
                   {socialIcons[s.label as keyof typeof socialIcons]}
                 </div>
                 <div>
-                  <div className="font-mono" style={{ fontSize: 9, letterSpacing: 2, color: 'var(--muted)', textTransform: 'uppercase' }}>
+                  <div className="font-mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', textTransform: 'uppercase' }}>
                     {s.label}
                   </div>
-                  <div className="font-mono" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text)', marginTop: 1 }}>
+                  <div className="font-mono" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginTop: 1 }}>
                     {s.value}
                   </div>
                 </div>
@@ -249,7 +249,7 @@ export default function Contact() {
               padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1,
             }}
           >
-            <div className="font-mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', marginBottom: '1.25rem', textTransform: 'uppercase' }}>
+            <div className="font-mono" style={{ fontSize: 12, letterSpacing: 2, color: 'var(--muted)', marginBottom: '1.25rem', textTransform: 'uppercase' }}>
               {'// send me a message!'}
             </div>
 
@@ -274,8 +274,8 @@ export default function Contact() {
               style={{
                 width: '100%', padding: '0.75rem',
                 background: status === 'loading' ? 'var(--bg3)' : 'var(--secondary)',
-                color: status === 'loading' ? 'var(--muted)' : '#000',
-                border: 'none', borderRadius: 2, fontSize: 11, letterSpacing: 2,
+                color: status === 'loading' ? 'var(--muted)' : 'var(--text-inverse)',
+                border: 'none', borderRadius: 2, fontSize: 12, letterSpacing: 2,
                 textTransform: 'uppercase', fontWeight: 700,
                 cursor: status === 'loading' ? 'not-allowed' : 'pointer',
                 transition: 'all 0.3s',
@@ -310,8 +310,8 @@ export default function Contact() {
             {status === 'success' && (
               <div className="font-mono" role="status" style={{
                 marginTop: '0.75rem', padding: '0.65rem 0.85rem',
-                background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.25)',
-                borderRadius: 2, fontSize: 11, letterSpacing: 1, color: 'var(--accent)', textAlign: 'center',
+                background: 'var(--accent-dim)', border: '1px solid var(--accent-border)',
+                borderRadius: 2, fontSize: 12, letterSpacing: 1, color: 'var(--accent)', textAlign: 'center',
               }}>
                 Sent! I&apos;ll get back to you soon.
               </div>
@@ -320,8 +320,8 @@ export default function Contact() {
             {status === 'error' && (
               <div className="font-mono" role="alert" style={{
                 marginTop: '0.75rem', padding: '0.65rem 0.85rem',
-                background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.25)',
-                borderRadius: 2, fontSize: 11, letterSpacing: 1, color: '#ef4444', textAlign: 'center',
+                background: 'var(--error-dim)', border: '1px solid var(--error-border)',
+                borderRadius: 2, fontSize: 12, letterSpacing: 1, color: 'var(--error)', textAlign: 'center',
               }}>
                 Failed to send. Try again or reach out via LinkedIn.
               </div>

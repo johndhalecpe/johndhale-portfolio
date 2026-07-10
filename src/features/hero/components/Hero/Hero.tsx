@@ -25,7 +25,6 @@ import { useTypewriter } from '../../hooks/useTypewriter'
 
 export default function Hero() {
   const displayed = useTypewriter()
-  const [dotHover, setDotHover] = useState(false)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
   const photoSize = isMobile ? 240 : 370
@@ -50,9 +49,9 @@ export default function Hero() {
       }}
     >
       {/* ── Left: text content ── */}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ flex: 1, minWidth: 0, position: 'relative' }}>
         <div className="section-label-wrap animate-fadeUp-1">
-          <div className="font-mono" style={{ fontSize: 11, letterSpacing: 2, color: 'var(--text-secondary)' }}>
+          <div className="font-mono" style={{ fontSize: 13, letterSpacing: 2, color: 'var(--text-secondary)' }}>
             {'// role: computer_engineer | developer'}
           </div>
         </div>
@@ -60,7 +59,7 @@ export default function Hero() {
         <h1
           className="animate-fadeUp-2"
           style={{
-            fontSize: isMobile ? 'clamp(2.25rem, 10vw, 3.5rem)' : 'clamp(3.5rem, 8vw, 6.5rem)',
+            fontSize: isMobile ? 'clamp(2.5rem, 14vw, 4.25rem)' : 'clamp(3.5rem, 8vw, 6.5rem)',
             fontWeight: 800,
             letterSpacing: isMobile ? -1 : -2,
             lineHeight: 1.0,
@@ -71,20 +70,7 @@ export default function Hero() {
           John Dhale
           <br />
           <span style={{ color: 'var(--text-secondary)' }}>Peralta</span>
-          <span
-            onMouseEnter={() => setDotHover(true)}
-            onMouseLeave={() => setDotHover(false)}
-            style={{
-              color: 'var(--secondary)',
-              display: 'inline-block',
-              transition: 'all 0.3s',
-              transform: dotHover ? 'scale(1.8) translateY(-4px)' : 'scale(1)',
-              cursor: 'default',
-              filter: dotHover ? 'drop-shadow(0 0 12px var(--secondary))' : 'none',
-            }}
-          >
-            .
-          </span>
+          <span className="font-mono" style={{ color: 'var(--accent)', fontSize: '0.61em', marginLeft: '0.05em' }}>{'</>'}</span>
         </h1>
 
         {/* ── Typewriter line ── */}
@@ -109,7 +95,7 @@ export default function Hero() {
           className="animate-fadeUp-4 font-mono"
           style={{
             maxWidth: 560,
-            fontSize: isMobile ? '0.82rem' : '0.9rem',
+            fontSize: isMobile ? '0.85rem' : '0.95rem',
             lineHeight: 1.8,
             color: 'var(--text-secondary)',
             marginBottom: isMobile ? '1.5rem' : '2.5rem',
@@ -135,9 +121,9 @@ web development. AI-assisted development workflows.`}
             href="#projects"
             className="font-mono"
             style={{
-              fontSize: 11, letterSpacing: 2, textTransform: 'uppercase',
+              fontSize: 12, letterSpacing: 2, textTransform: 'uppercase',
               padding: isMobile ? '10px 20px' : '12px 28px',
-              borderRadius: 2, background: 'var(--accent)', color: '#000', fontWeight: 700,
+              borderRadius: 2, background: 'var(--accent)', color: 'var(--text-inverse)', fontWeight: 700,
               transition: 'all 0.3s',
             }}
             onMouseEnter={(e) => {
@@ -155,7 +141,7 @@ web development. AI-assisted development workflows.`}
             href="#contact"
             className="font-mono"
             style={{
-              fontSize: 11, letterSpacing: 2, textTransform: 'uppercase',
+              fontSize: 12, letterSpacing: 2, textTransform: 'uppercase',
               padding: isMobile ? '10px 20px' : '12px 28px',
               borderRadius: 2, border: '1px solid var(--border)', color: 'var(--text-secondary)',
               transition: 'all 0.3s',
@@ -187,6 +173,40 @@ web development. AI-assisted development workflows.`}
           justifyContent: 'center',
         }}
       >
+        {/* ── Status badge above photo ── */}
+        <div
+          className="font-mono"
+          style={{
+            position: 'absolute',
+            top: isMobile ? -16 : -20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 10,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.3rem 0.75rem',
+            borderRadius: 20,
+            background: 'rgba(34,197,94,0.1)',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+          }}
+        >
+          <span
+            style={{
+              display: 'inline-block',
+              width: 8,
+              height: 8,
+              borderRadius: '50%',
+              background: '#22c55e',
+              boxShadow: '0 0 8px #22c55e, 0 0 16px rgba(34,197,94,0.6)',
+            }}
+          />
+          <span style={{ fontSize: 10, letterSpacing: 1, color: '#22c55e', fontWeight: 500 }}>
+            Available to work now.
+          </span>
+        </div>
+
         <div style={{ position: 'absolute', width: ringOuter, height: ringOuter, borderRadius: '50%', border: '1px solid var(--accent-border)', opacity: 0.2 }} />
         <div style={{ position: 'absolute', width: ringMid, height: ringMid, borderRadius: '50%', border: '1px solid var(--secondary-border)', opacity: 0.15 }} />
         <div style={{ position: 'absolute', width: ringSpin1, height: ringSpin1, borderRadius: '50%', border: '2px solid transparent', borderTopColor: 'var(--accent)', borderRightColor: 'var(--accent)', opacity: 0.2, animation: 'spin 12s linear infinite' }} />
@@ -201,7 +221,7 @@ web development. AI-assisted development workflows.`}
           }}
         >
           <Image
-            src="/Togalolol.jpg"
+            src="/sakbaysquooshed.jpg"
             alt="John Dhale Peralta — Computer Engineer"
             fill
             sizes={isMobile ? '240px' : '370px'}
@@ -233,7 +253,7 @@ web development. AI-assisted development workflows.`}
         <div
           className="font-mono hide-mobile"
           style={{
-            position: 'absolute', bottom: -32, fontSize: 9, letterSpacing: 3,
+            position: 'absolute', bottom: -32, fontSize: 11, letterSpacing: 3,
             color: 'var(--muted)', textTransform: 'uppercase', animation: 'float 3s ease-in-out infinite',
           }}
         >
