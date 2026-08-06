@@ -4,9 +4,50 @@ import { useState } from 'react'
 import { Project } from '../../types'
 import PreviewModal from '@/components/ui/PreviewModal/PreviewModal'
 
-export default function ProjectCard({ num, name, desc, tags, dashed, href, images }: Project) {
+export default function ProjectCard({ num, name, desc, tags, dashed, href, images, compact }: Project) {
   const [showPreview, setShowPreview] = useState(false)
   const hasPreview = images && images.length > 0
+
+  if (compact) {
+    return (
+      <div
+        style={{
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
+          padding: '1rem',
+          borderRadius: 4,
+          position: 'relative',
+          overflow: 'hidden',
+          transition: 'border-color 0.3s',
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)' }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginBottom: '0.5rem' }}>
+          <div className="font-mono" style={{ fontSize: 11, color: 'var(--accent)', opacity: 0.5, letterSpacing: 2, whiteSpace: 'nowrap' }}>
+            {num}
+          </div>
+          <div style={{ fontSize: '1rem', fontWeight: 700, lineHeight: 1.3 }}>
+            {name}
+          </div>
+        </div>
+        <div className="font-mono" style={{ fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+          {desc}
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="font-mono"
+              style={{ fontSize: 10, letterSpacing: 1, color: 'var(--accent)', background: 'var(--accent-dim)', padding: '2px 8px', borderRadius: 2 }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
