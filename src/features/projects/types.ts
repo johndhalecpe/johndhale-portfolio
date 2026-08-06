@@ -10,4 +10,5 @@ export interface Project {
   dashed: boolean
   href?: string
   images?: string[]
+  compact?: boolean
 }

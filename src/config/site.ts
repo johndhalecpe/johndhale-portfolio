@@ -58,7 +58,7 @@ export const siteConfig: SiteConfig = {
     {
       label: 'Resume',
       value: 'Download PDF',
-      href: '/resume.pdf',
+      href: '/resume-2026.pdf',
     },
   ],
 
