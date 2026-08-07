@@ -75,6 +75,21 @@
   border-radius: 2px;
   text-decoration: none;
   transition: all 0.2s;
+  position: relative;
+}
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.navLink:hover::after {
+  width: 60%;
+  left: 20%;
 }
 
 /* Mobile menu */
@@ -88,6 +103,22 @@
   backdrop-filter: blur(12px);
   padding: 0.5rem 0;
   z-index: 49;
+  animation: slideDown 0.3s ease forwards;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; transform: translateY(-8px); }
+  to { opacity: 1; max-height: 400px; transform: translateY(0); }
+}
+
+.mobileDropdown.closing {
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 1; max-height: 400px; transform: translateY(0); }
+  to { opacity: 0; max-height: 0; transform: translateY(-8px); }
 }
 
 .mobileLink {
@@ -100,4 +131,18 @@
   text-decoration: none;
   transition: all 0.2s;
   border-left: 2px solid transparent;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
+}
+.mobileLink:nth-child(1) { animation-delay: 0.05s; }
+.mobileLink:nth-child(2) { animation-delay: 0.1s; }
+.mobileLink:nth-child(3) { animation-delay: 0.15s; }
+.mobileLink:nth-child(4) { animation-delay: 0.2s; }
+.mobileLink:nth-child(5) { animation-delay: 0.25s; }
+.mobileLink:nth-child(6) { animation-delay: 0.3s; }
+.mobileLink:nth-child(7) { animation-delay: 0.35s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
 }

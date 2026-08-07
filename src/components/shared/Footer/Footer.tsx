@@ -48,13 +48,17 @@ export default function Footer() {
           >
             <span
               className="font-mono footer-logo-jd"
-              style={{ fontSize: 58, fontWeight: 700, letterSpacing: 3, color: 'var(--text)', opacity: 1 }}
+              style={{ fontSize: 58, fontWeight: 700, letterSpacing: 3, color: 'var(--text)', opacity: 1, transition: 'letter-spacing 0.3s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.letterSpacing = '6px' }}
+              onMouseLeave={(e) => { e.currentTarget.style.letterSpacing = '3px' }}
             >
               JD
             </span>
             <span
               className="font-mono footer-logo-cpe"
-              style={{ fontSize: 34, fontWeight: 400, letterSpacing: 2, color: 'var(--accent)', opacity: 0.7 }}
+              style={{ fontSize: 34, fontWeight: 400, letterSpacing: 2, color: 'var(--accent)', opacity: 0.7, transition: 'opacity 0.3s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.7' }}
             >
               CpE
             </span>

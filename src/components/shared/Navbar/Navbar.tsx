@@ -15,7 +15,7 @@
 //   - Nav link definitions come from site config
 // ──────────────────────────────────────────────
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTheme } from '@/context/ThemeContext'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { navLinks } from '@/constants/navigation'
@@ -27,6 +27,8 @@ export default function Navbar() {
   const { theme, toggle } = useTheme()
   const [toggleHover, setToggleHover] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuClosing, setMenuClosing] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isMobile = useMediaQuery('(max-width: 768px)')
   const isDark = theme === 'dark'
 
@@ -62,7 +64,20 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
-  const closeMenu = useCallback(() => setMenuOpen(false), [])
+  const closeMenu = useCallback(() => {
+    if (!menuOpen || menuClosing) return
+    setMenuClosing(true)
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => {
+      setMenuOpen(false)
+      setMenuClosing(false)
+    }, 300) // matches slideUp duration
+  }, [menuOpen, menuClosing])
+
+  const openMenu = useCallback(() => {
+    setMenuOpen(true)
+    setMenuClosing(false)
+  }, [])
 
   return (
     <nav
@@ -229,7 +244,7 @@ export default function Navbar() {
 
             {/* Hamburger button */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => (menuOpen && !menuClosing ? closeMenu() : openMenu())}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               style={{
@@ -250,7 +265,7 @@ export default function Navbar() {
                   background: 'var(--text)',
                   borderRadius: 1,
                   transition: 'all 0.3s',
-                  transform: menuOpen ? 'rotate(45deg) translate(3px, 3px)' : 'none',
+                  transform: menuOpen && !menuClosing ? 'rotate(45deg) translate(3px, 3px)' : 'none',
                 }}
               />
               <span
@@ -261,7 +276,7 @@ export default function Navbar() {
                   background: 'var(--text)',
                   borderRadius: 1,
                   transition: 'all 0.3s',
-                  opacity: menuOpen ? 0 : 1,
+                  opacity: menuOpen && !menuClosing ? 0 : 1,
                 }}
               />
               <span
@@ -272,7 +287,7 @@ export default function Navbar() {
                   background: 'var(--text)',
                   borderRadius: 1,
                   transition: 'all 0.3s',
-                  transform: menuOpen ? 'rotate(-45deg) translate(3px, -3px)' : 'none',
+                  transform: menuOpen && !menuClosing ? 'rotate(-45deg) translate(3px, -3px)' : 'none',
                 }}
               />
             </button>
@@ -282,7 +297,15 @@ export default function Navbar() {
 
       {/* Mobile dropdown menu */}
       {isMobile && menuOpen && (
-        <div className={styles.mobileDropdown}>
+        <div
+          className={`${styles.mobileDropdown} ${menuClosing ? styles.closing : ''}`}
+          onAnimationEnd={() => {
+            if (menuClosing) {
+              setMenuOpen(false)
+              setMenuClosing(false)
+            }
+          }}
+        >
           {navLinks.map((link) => (
             <a
               key={link.href}

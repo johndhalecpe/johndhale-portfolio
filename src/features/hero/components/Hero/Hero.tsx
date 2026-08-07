@@ -18,7 +18,7 @@
 //   - Typewriter logic → useTypewriter hook (teaches hook extraction)
 // ──────────────────────────────────────────────
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useTypewriter } from '../../hooks/useTypewriter'
@@ -26,6 +26,14 @@ import { useTypewriter } from '../../hooks/useTypewriter'
 export default function Hero() {
   const displayed = useTypewriter()
   const isMobile = useMediaQuery('(max-width: 768px)')
+  const [tagHovered, setTagHovered] = useState(false)
+  const tagTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleTagInteract = useCallback(() => {
+    setTagHovered(true)
+    if (tagTimer.current) clearTimeout(tagTimer.current)
+    tagTimer.current = setTimeout(() => setTagHovered(false), 3000)
+  }, [])
 
   const photoSize = isMobile ? 240 : 370
   const ringOuter = isMobile ? 280 : 450
@@ -70,14 +78,43 @@ export default function Hero() {
           John Dhale
           <br />
           <span style={{ color: 'var(--text-secondary)' }}>Peralta</span>
-          <span className="font-mono" style={{ color: 'var(--accent)', fontSize: '0.61em', marginLeft: '0.05em' }}>{'</>'}</span>
+          <span
+            className="font-mono"
+            style={{
+              color: 'var(--accent)',
+              fontSize: '0.61em',
+              marginLeft: '0.05em',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'baseline',
+              userSelect: 'none',
+            }}
+            onMouseEnter={handleTagInteract}
+            onMouseLeave={() => setTagHovered(false)}
+            onClick={handleTagInteract}
+            onTouchStart={handleTagInteract}
+          >
+            {'</'}
+            <span
+              style={{
+                display: 'inline-block',
+                overflow: 'hidden',
+                width: tagHovered ? '2.7ch' : '0',
+                transition: 'width 0.3s ease',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              CpE
+            </span>
+            {'>'}
+          </span>
         </h1>
 
         {/* ── Typewriter line ── */}
         <div
           className="animate-fadeUp-3 font-mono"
           style={{
-            fontSize: 'clamp(0.75rem, 2vw, 1.1rem)',
+            fontSize: isMobile ? '0.9rem' : 'clamp(0.9rem, 2vw, 1.1rem)',
             color: 'var(--text-secondary)',
             marginBottom: isMobile ? '1rem' : '1.5rem',
             minHeight: '1.4em',
