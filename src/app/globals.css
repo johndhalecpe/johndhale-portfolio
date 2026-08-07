@@ -267,6 +267,54 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--card-shadow), 0 0 0 1px var(--accent-border);
 }
 
+/* ── Nav link underline animation ── */
+.nav-underline {
+  position: relative;
+  display: inline-block;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.nav-underline:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ── Slide down animation ── */
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; transform: translateY(-8px); }
+  to { opacity: 1; max-height: 400px; transform: translateY(0); }
+}
+.slide-down {
+  animation: slideDown 0.3s ease forwards;
+  overflow: hidden;
+}
+
+/* ── Scale on hover ── */
+.scale-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.scale-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ── Footer logo hover ── */
+.footer-logo-hover {
+  transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+}
+.footer-logo-hover:hover {
+  opacity: 1 !important;
+  letter-spacing: 5px;
+}
+
 /* ── Form placeholder ── */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
