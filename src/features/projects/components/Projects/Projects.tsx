@@ -22,7 +22,7 @@ const featured = [
     name: 'Agham Setlist',
     desc: 'A worship setlist management app built with Next.js and Supabase. Plan, organise, and manage church worship service setlists with a clean, intuitive interface — powered by a PostgreSQL database for real-time song and service management.',
     tags: ['Next.js', 'TypeScript', 'React', 'Supabase', 'PostgreSQL'],
-    href: 'https://agham-setlist.vercel.app/',
+    href: 'https://setlist-agham.vercel.app/',
     badges: [
       { label: 'FULL-STACK', color: 'var(--secondary)', bg: 'var(--secondary-dim)', border: 'var(--secondary-border)' },
       { label: 'SUPABASE', color: 'var(--badge-supabase)', bg: 'var(--badge-supabase-dim)', border: 'var(--badge-supabase-border)' },
