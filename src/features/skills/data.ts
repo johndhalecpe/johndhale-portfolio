@@ -12,8 +12,8 @@ import { SkillGroup } from './types'
 
 export const skillGroups: SkillGroup[] = [
   {
-    label: 'Web & Software',
-    code: '// web & software development',
+    label: 'Frontend',
+    code: '// frontend development',
     color: 'var(--accent)',
     skills: [
       { name: 'HTML', accent: true },
@@ -23,12 +23,23 @@ export const skillGroups: SkillGroup[] = [
       { name: 'TypeScript', accent: true },
       { name: 'React', accent: true },
       { name: 'Next.js', accent: true },
+      { name: 'Vitest', accent: true },
+      { name: 'Playwright', accent: true },
+      { name: 'TanStack Query', accent: true },
+    ],
+  },
+  {
+    label: 'Backend & Deployment',
+    code: '// backend & deployment',
+    color: 'var(--accent-cyan)',
+    skills: [
       { name: 'Node.js', accent: true },
-      { name: 'Supabase', accent: true },
+      { name: 'Supabase Auth & RLS', accent: true },
       { name: 'PostgreSQL', accent: true },
-      { name: 'Docker', accent: true },
       { name: 'REST APIs', accent: true },
+      { name: 'Docker', accent: true },
       { name: 'Vercel', secondary: true },
+      { name: 'Webhooks', accent: true },
     ],
   },
   {
